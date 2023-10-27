@@ -1,8 +1,4 @@
-﻿
-using Projeto___Aula_4;
-
-
-var usuarioAnonimo = new Usuario();
+﻿var usuarioAnonimo = new Usuario();
 ExibirCentenario(usuarioAnonimo.Nome, usuarioAnonimo.Centenario);
 
 

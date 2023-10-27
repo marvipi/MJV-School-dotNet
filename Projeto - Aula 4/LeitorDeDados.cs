@@ -1,6 +1,4 @@
-﻿namespace Projeto___Aula_4;
-
-/// <summary>
+﻿/// <summary>
 /// Representa um algoritmo que lê dados do console.
 /// </summary>
 public static class LeitorDeDados

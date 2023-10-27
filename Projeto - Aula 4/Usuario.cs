@@ -1,6 +1,4 @@
-﻿namespace Projeto___Aula_4;
-
-/// <summary>
+﻿/// <summary>
 /// Representa um usuário deste sistema, que tem um nome, uma data de nascimento e uma data de centenário.
 /// </summary>
 public class Usuario
