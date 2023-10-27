@@ -14,6 +14,17 @@ var centenarioDoCentenarioEstatico = CentenarioEstatico.CalcularCentenario(dataD
 ExibirCentenario(nomeDoCentenarioEstatico, centenarioDoCentenarioEstatico);
 
 
+var usuarioAnonimo = new Usuario();
+ExibirCentenario(usuarioAnonimo.Nome, usuarioAnonimo.Centenario);
+
+var nomeParaInstancia = CentenarioEstatico.LerNome();
+var dataDeNascimentoParaInstancia = CentenarioEstatico.LerDataDeNascimento();
+var usuario = new Usuario(nomeParaInstancia, dataDeNascimentoParaInstancia);
+ExibirCentenario(usuario.Nome, usuario.Centenario);
+usuario.Atualizar("Vinícius");
+usuario.Atualizar(DateTime.Now);
+ExibirCentenario(usuario.Nome, usuario.Centenario);
+
 string LerNome()
 {
 	Console.Write("Digite o seu nome: ");
