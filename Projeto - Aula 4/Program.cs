@@ -1,11 +1,10 @@
 ﻿
 var nome = LerNome();
+var dataDeNascimento = LerDataDeNascimento();
+var centenario = CalcularCentenario(dataDeNascimento);
 
-var dataDeNascimento = PerguntarDataDeNascimento();
-
-var aniversarioCentenario = AniversarioCentenario(dataDeNascimento);
-
-Console.WriteLine($"Você viverá até {aniversarioCentenario.ToShortDateString()}");
+Console.WriteLine($"Olá, {nome}!");
+Console.WriteLine($"Você fará 100 anos em {centenario.ToShortDateString()}.");
 
 string LerNome()
 {
@@ -16,20 +15,21 @@ string LerNome()
 		: nome;
 }
 
-DateTime PerguntarDataDeNascimento()
+DateTime LerDataDeNascimento()
 {
-	Console.Write("Digite a sua data de nascimento: ");
-	var entrada = Console.ReadLine();
-	while (!DateTime.TryParse(entrada, out _))
+	var entrada = "";
+	DateTime dataValida;
+
+	// Tente converter o que o usuário digitou para um DateTime.
+	// Se a conversão suceder, armazene o resultado da conversão na variável dataValida e saia do while.
+	// Senão, peça para o usuário digitar de novo e tente fazer a conversão novamente.
+	while (!DateTime.TryParse(entrada, out dataValida)) 
 	{
-		Console.Write("Digite a sua data de nascimento: ");
+		Console.Write("Digite a sua data de nascimento no formato dd/mm/aaaa: ");
 		entrada = Console.ReadLine();
 	}
-	return DateTime.Parse(entrada);
+
+	return dataValida;
 }
 
-DateTime AniversarioCentenario(DateTime dataDeNascimento)
-{
-	var aniversarioCentenario = dataDeNascimento.AddYears(100);
-	return aniversarioCentenario;
-}
+DateTime CalcularCentenario(DateTime dataDeNascimento) => dataDeNascimento.AddYears(100);
