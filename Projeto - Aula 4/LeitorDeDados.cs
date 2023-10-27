@@ -1,9 +1,9 @@
 ﻿namespace Projeto___Aula_4;
 
 /// <summary>
-///		Representa um algoritmo que calcula a data do centenário do usuário.
+///		Representa um algoritmo que lê dados do console.
 /// </summary>
-public static class CentenarioEstatico
+public static class LeitorDeDados
 {
 	/// <summary>
 	///		Lê o nome do usuário no console.
@@ -43,15 +43,4 @@ public static class CentenarioEstatico
 
 		return dataValida;
 	}
-
-	/// <summary>
-	///		Calcula a data em que o usuário fará 100 anos de idade.
-	/// </summary>
-	/// <param name="dataDeNascimento"> 
-	///		A data de nascimento do usuário. 
-	/// </param>
-	/// <returns> 
-	///		Um <see cref="DateTime"/> que representa a data na qual o usuário fará 100 anos de idade. 
-	/// </returns>
-	public static DateTime CalcularCentenario(DateTime dataDeNascimento) => dataDeNascimento.AddYears(100);
 }
