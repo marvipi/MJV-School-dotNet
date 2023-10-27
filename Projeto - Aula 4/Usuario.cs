@@ -32,9 +32,8 @@ public class Usuario
     /// <param name="dataDeNascimento"> A data de nascimento do usuário. </param>
     public Usuario(string nome, DateTime dataDeNascimento)
 	{
-		Nome = nome;
-		DataDeNascimento = dataDeNascimento;
-		CalcularCentenario();
+        Nome = nome;
+        Atualizar(dataDeNascimento);
 	}
 
     /// <summary>
