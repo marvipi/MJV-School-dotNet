@@ -17,7 +17,7 @@ string LerNome()
 
 DateTime LerDataDeNascimento()
 {
-	var entrada = "";
+	var entrada = string.Empty;
 	DateTime dataValida;
 
 	// Tente converter o que o usuário digitou para um DateTime.
