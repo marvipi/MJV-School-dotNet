@@ -1,16 +1,16 @@
 ﻿namespace Projeto___Aula_4;
 
 /// <summary>
-///	Representa um algoritmo que lê dados do console.
+/// Representa um algoritmo que lê dados do console.
 /// </summary>
 public static class LeitorDeDados
 {
 	/// <summary>
-	///	Lê o nome do usuário no console.
+	/// Lê o nome do usuário no console.
 	/// </summary>
-	/// <returns> 
-	///	Uma <see cref="string"/> que representa o nome digitado pelo usuário, 
-	///	ou "Anônimo", caso o usuário não tenha digitado nada.
+	/// <returns>
+	/// Uma <see cref="string"/> que representa o nome digitado pelo usuário,
+	/// ou "Anônimo", caso o usuário não tenha digitado nada.
 	/// </returns>
 	public static string LerNome()
 	{
@@ -22,13 +22,13 @@ public static class LeitorDeDados
 	}
 
 	/// <summary>
-	///	Lê a data de nascimento do usuário no console.
+	/// Lê a data de nascimento do usuário no console.
 	/// </summary>
 	/// <remarks>
-	///	O método não retorna até que o usuário digite uma data num formato aceito pelo <see cref="DateTime"/>.
+	/// O método não retorna até que o usuário digite uma data num formato aceito pelo <see cref="DateTime"/>.
 	/// </remarks>
-	/// <returns> 
-	///	Um <see cref="DateTime"/> que representa a data de nascimento digitada pelo usuário. 
+	/// <returns>
+	/// Um <see cref="DateTime"/> que representa a data de nascimento digitada pelo usuário. 
 	/// </returns>
 	public static DateTime LerDataDeNascimento()
 	{
