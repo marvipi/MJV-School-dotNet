@@ -8,11 +8,17 @@ public class Usuario
     /// <summary>
     /// O nome deste usuário.
     /// </summary>
+    /// <remarks>
+    /// Pressupõe que todos os valores passados são nomes válidos.
+    /// </remarks>
     public string Nome { get; set; }
 
     /// <summary>
     /// A data de nascimento deste usuário.
     /// </summary>
+    /// <remarks>
+    /// Pressupõe que todos os valores passados são datas de nascimento válidas.
+    /// </remarks>
     public DateTime DataDeNascimento 
     { 
         get => _dataDeNascimento;
