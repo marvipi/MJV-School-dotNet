@@ -14,6 +14,8 @@ public static class LeitorDeDados
 	{
 		Console.Write("Digite o seu nome: ");
 		var nome = Console.ReadLine();
+		nome = nome?.Trim();
+
 		return nome switch
 		{
 			null => "Anônimo",
