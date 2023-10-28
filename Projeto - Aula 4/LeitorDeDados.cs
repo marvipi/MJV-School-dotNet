@@ -14,9 +14,12 @@ public static class LeitorDeDados
 	{
 		Console.Write("Digite o seu nome: ");
 		var nome = Console.ReadLine();
-		return nome == string.Empty || nome == null
-			? "Anônimo"
-			: nome;
+		return nome switch
+		{
+			null => "Anônimo",
+			"" => "Anônimo",
+			_ => nome
+		};
 	}
 
 	/// <summary>
