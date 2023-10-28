@@ -3,7 +3,7 @@
 /// </summary>
 public class Usuario
 {
-    DateTime _dataDeNascimento;
+    DateOnly _dataDeNascimento;
 
     /// <summary>
     /// O nome deste usuário.
@@ -19,7 +19,7 @@ public class Usuario
     /// <remarks>
     /// Pressupõe que todos os valores passados são datas de nascimento válidas.
     /// </remarks>
-    public DateTime DataDeNascimento 
+    public DateOnly DataDeNascimento 
     { 
         get => _dataDeNascimento;
         set
@@ -32,17 +32,17 @@ public class Usuario
     /// <summary>
     /// A data em que este usuário fará 100 anos de idade.
     /// </summary>
-    public DateTime Centenario { get; private set; }
+    public DateOnly Centenario { get; private set; }
 
     /// <summary>
     /// Instancia um novo usuário, cujo nome é "Anônimo" e cuja data de centenario é daqui 100 anos.
     /// </summary>
-    public Usuario() : this("Anônimo", DateTime.Now) { }
+    public Usuario() : this("Anônimo", DateOnly.FromDateTime(DateTime.Now)) { }
 
     /// <summary>
     /// Instancia um novo usuário, inicializando o nome, a data de nascimento e a data do centenário.
     /// </summary>
-    public Usuario(string nome, DateTime dataDeNascimento)
+    public Usuario(string nome, DateOnly dataDeNascimento)
     {
 		Nome = nome;
 		DataDeNascimento = dataDeNascimento;

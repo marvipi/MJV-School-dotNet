@@ -1,4 +1,6 @@
-﻿/// <summary>
+﻿using System.Globalization;
+
+/// <summary>
 /// Representa um algoritmo que lê dados do console.
 /// </summary>
 public static class LeitorDeDados
@@ -24,17 +26,17 @@ public static class LeitorDeDados
 	/// Lê a data de nascimento do usuário no console.
 	/// </summary>
 	/// <remarks>
-	/// O método não retorna até que o usuário digite uma data num formato aceito pelo <see cref="DateTime"/>.
+	/// O método não retorna até que o usuário digite uma data num formato aceito pelo <see cref="DateOnly"/>.
 	/// </remarks>
 	/// <returns>
-	/// Um <see cref="DateTime"/> que representa a data de nascimento digitada pelo usuário. 
+	/// Um <see cref="DateOnly"/> que representa a data de nascimento digitada pelo usuário. 
 	/// </returns>
-	public static DateTime LerDataDeNascimento()
+	public static DateOnly LerDataDeNascimento()
 	{
 		var entrada = string.Empty;
-		DateTime dataValida;
+		DateOnly dataValida;
 
-		while (!DateTime.TryParse(entrada, out dataValida))
+		while (!DateOnly.TryParse(entrada, out dataValida))
 		{
 			entrada = PerguntarDataDeNascimento();
 		}
@@ -46,16 +48,16 @@ public static class LeitorDeDados
 	/// Lê a data de nascimento do usuário no console.
 	/// </summary>
 	/// <remarks>
-	/// O método não retorna até que o usuário digite uma data num formato aceito pelo <see cref="DateTime"/>.
+	/// O método não retorna até que o usuário digite uma data num formato aceito pelo <see cref="DateOnly"/>.
 	/// </remarks>
 	/// <returns>
-	/// Um <see cref="DateTime"/> que representa a data de nascimento digitada pelo usuário. 
+	/// Um <see cref="DateOnly"/> de cultura invariante, que representa a data de nascimento digitada pelo usuário. 
 	/// </returns>
-	public static DateTime LerDataDeNascimentoRecursivo()
+	public static DateOnly LerDataDeNascimentoRecursivo()
 	{
 		var entrada = PerguntarDataDeNascimento();
 
-		return DateTime.TryParse(entrada, out var dataValida)
+		return DateOnly.TryParse(entrada, CultureInfo.InvariantCulture, out var dataValida)
 			? dataValida
 			: LerDataDeNascimentoRecursivo();
 	}
