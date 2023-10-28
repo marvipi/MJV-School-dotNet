@@ -14,7 +14,8 @@ public static class LeitorDeDados
 	{
 		Console.Write("Digite o seu nome: ");
 		var nome = Console.ReadLine();
-		return nome == string.Empty || nome == null
+
+		return string.IsNullOrWhiteSpace(nome)
 			? "Anônimo"
 			: nome;
 	}
@@ -35,10 +36,33 @@ public static class LeitorDeDados
 
 		while (!DateTime.TryParse(entrada, out dataValida))
 		{
-			Console.Write("Digite a sua data de nascimento no formato dd/mm/aaaa: ");
-			entrada = Console.ReadLine();
+			entrada = PerguntarDataDeNascimento();
 		}
 
 		return dataValida;
+	}
+
+	/// <summary>
+	/// Lê a data de nascimento do usuário no console.
+	/// </summary>
+	/// <remarks>
+	/// O método não retorna até que o usuário digite uma data num formato aceito pelo <see cref="DateTime"/>.
+	/// </remarks>
+	/// <returns>
+	/// Um <see cref="DateTime"/> que representa a data de nascimento digitada pelo usuário. 
+	/// </returns>
+	public static DateTime LerDataDeNascimentoRecursivo()
+	{
+		var entrada = PerguntarDataDeNascimento();
+
+		return DateTime.TryParse(entrada, out var dataValida)
+			? dataValida
+			: LerDataDeNascimentoRecursivo();
+	}
+
+	static string? PerguntarDataDeNascimento()
+	{
+		Console.Write("Digite a sua data de nascimento no formato dd/mm/aaaa: ");
+		return Console.ReadLine();
 	}
 }

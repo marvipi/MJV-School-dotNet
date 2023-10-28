@@ -8,11 +8,6 @@ var usuario = new Usuario(nome, dataDeNascimento);
 ExibirCentenario(usuario.Nome, usuario.Centenario);
 
 
-usuario.Atualizar("Novo nome");
-usuario.Atualizar(DateTime.Now);
-ExibirCentenario(usuario.Nome, usuario.Centenario);
-
-
 void ExibirCentenario(string nome, DateTime centenario)
 {
 	Console.WriteLine($"Olá, {nome}!");
