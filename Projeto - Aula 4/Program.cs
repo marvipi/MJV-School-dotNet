@@ -8,8 +8,8 @@ var usuario = new Usuario(nome, dataDeNascimento);
 ExibirCentenario(usuario.Nome, usuario.Centenario);
 
 
-void ExibirCentenario(string nome, DateTime centenario)
+void ExibirCentenario(string nome, DateOnly centenario)
 {
 	Console.WriteLine($"Olá, {nome}!");
-	Console.WriteLine($"Você fará 100 anos em {centenario.ToShortDateString()}.");
+	Console.WriteLine($"Você fará 100 anos em {centenario}.");
 }
