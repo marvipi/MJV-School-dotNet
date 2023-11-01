@@ -44,16 +44,47 @@ public static class LeitorDeDados
 		return dataValida;
 	}
 
-	/// <summary>
-	/// Lê a data de nascimento do usuário no console.
-	/// </summary>
-	/// <remarks>
-	/// O método não retorna até que o usuário digite uma data num formato aceito pelo <see cref="DateOnly"/>.
-	/// </remarks>
-	/// <returns>
-	/// Um <see cref="DateOnly"/> de cultura invariante, que representa a data de nascimento digitada pelo usuário. 
-	/// </returns>
-	public static DateOnly LerDataDeNascimentoRecursivo()
+    /// <summary>
+    /// Lê a data de nascimento do usuário no console.
+    /// </summary>
+    /// <remarks>
+    /// O método não retorna até que o usuário digite uma data num formato aceito pelo <see cref="DateOnly"/>.
+    /// </remarks>
+    /// <returns>
+    /// Um <see cref="DateOnly"/> que representa a data de nascimento digitada pelo usuário. 
+    /// </returns>
+    public static DateOnly LerDataDeNascimentoTryCatch()
+    {
+        var entrada = string.Empty;
+        DateOnly dataValida;
+
+        while (true)
+        {
+            try
+            {
+                entrada = PerguntarDataDeNascimento();
+                dataValida = DateOnly.Parse(entrada!);
+                break;
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine($"Formato inválido. Esperado: dd/MM/aaaa. Digitado: {entrada}");
+            }
+        }
+
+        return dataValida;
+    }
+
+    /// <summary>
+    /// Lê a data de nascimento do usuário no console.
+    /// </summary>
+    /// <remarks>
+    /// O método não retorna até que o usuário digite uma data num formato aceito pelo <see cref="DateOnly"/>.
+    /// </remarks>
+    /// <returns>
+    /// Um <see cref="DateOnly"/> de cultura invariante, que representa a data de nascimento digitada pelo usuário. 
+    /// </returns>
+    public static DateOnly LerDataDeNascimentoRecursivo()
 	{
 		var entrada = PerguntarDataDeNascimento();
 
