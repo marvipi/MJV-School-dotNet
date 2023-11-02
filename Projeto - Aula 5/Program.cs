@@ -1,4 +1,6 @@
 ﻿
+using System.Text;
+
 const int MAIOR_NUM_LOTERIA = 60;
 const int NUMS_POR_APOSTA = 6;
 const decimal PRECO_POR_APOSTA = 5M;
@@ -8,8 +10,11 @@ Apostar();
 // Permite que o usuário jogue na loteria, desde que ele tenha dinheiro o suficiente para apostar.
 void Apostar()
 {
-    Console.WriteLine(" $$$$$$ LOTERIA PREMIADA $$$$$$ ");
     var nome = LerNome();
+    var apostas = new List<int[]>();
+
+    Console.WriteLine(" $$$$$$ LOTERIA PREMIADA $$$$$$ ");
+    Console.WriteLine($"Olá, {nome}!");
     while (true)
     {
         var dinheiro = LerQtdDinheiro();
@@ -21,8 +26,8 @@ void Apostar()
             break;
         }
 
-        var numsDaSorte = PegarNumerosDaSorte(dinheiro);
-        Exibir(nome, numsDaSorte);
+        var aposta = PegarNumerosDaSorte(dinheiro);
+        apostas.Add(aposta);
 
         if (JogarNovamente() == "n")
         {
@@ -30,6 +35,64 @@ void Apostar()
             break;
         }
     }
+
+    var saida = ApostasToString(nome, apostas);
+    Console.WriteLine(saida);
+    SalvarResultado(saida);
+}
+
+// Cria um arquivo de texto no diretório atual e salva o resultado das apostas dentro dele,
+// sobreescrevendo o arquivo se necessário.
+void SalvarResultado(string apostas)
+{
+    // \Projeto - Aula 5\bin\Debug\net7.0\apostas
+    var caminhoDirApostas = Path.Combine(Environment.CurrentDirectory, "apostas");
+    var dirApostas = Directory.CreateDirectory(caminhoDirApostas);
+
+    // \Projeto - Aula 5\bin\Debug\net7.0\apostas\apostas.txt
+    var caminhoArquivoApostas = Path.Combine(dirApostas.FullName, "apostas.txt");
+    var arquivoDeApostas = new FileInfo(caminhoArquivoApostas);
+
+    using (var streamWriter = arquivoDeApostas.CreateText())
+    {
+        foreach (var linha in apostas.Split(Environment.NewLine))
+        {
+            streamWriter.WriteLine(linha);
+        }
+    }
+}
+
+// Transforma cada aposta em uma string, separando-as entre linhas tracejadas.
+string ApostasToString(string nome, List<int[]> apostas)
+{
+    var sb = new StringBuilder();
+    sb.AppendLine($"{nome}, aqui estam os seus números da sorte:");
+    foreach (var aposta in apostas)
+    {
+        sb.AppendLine("--------------------------------");
+        var numsDaSorteString = NumsDaSorteToString(aposta);
+        sb.Append(numsDaSorteString);
+        sb.AppendLine("--------------------------------");
+    }
+    return sb.ToString();
+}
+
+// Transforma os números da sorte da aposta para uma string.
+// Cada sequência de números da sorte é separada em uma linha diferente.
+string NumsDaSorteToString(int[] aposta)
+{
+    var sb = new StringBuilder();
+    foreach (var i in Enumerable.Range(0, aposta.Length))
+    {
+        var numDaSorteFormatado = aposta[i].ToString("00");
+        sb.AppendFormat("  {0} ", numDaSorteFormatado);
+
+        if (DivisivelPor(i + 1, NUMS_POR_APOSTA))
+        {
+            sb.AppendLine();
+        }
+    }
+    return sb.ToString();
 }
 
 // Gera uma sequência de apostas, cada uma contendo NUMS_POR_APOSTA números distintos.
@@ -79,24 +142,6 @@ int DefinirQtdNumsDaSorte(decimal dinheiro)
         : (qtdNumsDaSorte - (qtdNumsDaSorte % NUMS_POR_APOSTA));
 
     return qtdNumsDaSorte;
-}
-
-// Exibe todos os números da sorte, mostrando cada aposta em uma linha diferente.
-// Pressupõe que o comprimento de numsDaSorte é maior que zero e divisível por NUMS_POR_APOSTA.
-void Exibir(string nome, int[] numsDaSorte)
-{
-    Console.WriteLine($"Olá, {nome}. Seus números da sorte são:");
-
-    foreach (var i in Enumerable.Range(0, numsDaSorte.Length))
-    {
-        var numDaSorteFormatado = numsDaSorte[i].ToString("00");
-        Console.Write("{0} ", numDaSorteFormatado);
-
-        if (DivisivelPor(i + 1, NUMS_POR_APOSTA))
-        {
-            Console.WriteLine();
-        }
-    }
 }
 
 string JogarNovamente()
