@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>Projeto_Aula_8___MVC</RootNamespace>
+    <UserSecretsId>4719a11e-f278-42fe-9aee-f42ff085a93d</UserSecretsId>
+  </PropertyGroup>
+
+</Project>
