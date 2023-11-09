@@ -15,7 +15,7 @@ ExibirCentenario(usuario.Nome, usuario.Centenario, culturaBrasileira);
 
 void ExibirCentenario(string nome, DateOnly centenario, IFormatProvider formatoCultural)
 {
-	var centenarioEmFormatoLongo = centenario.ToString("D", formatoCultural);
-	Console.WriteLine($"Olá, {nome}!");
-	Console.WriteLine($"Você fará 100 anos em {centenarioEmFormatoLongo}.");
+    var centenarioEmFormatoLongo = centenario.ToString("D", formatoCultural);
+    Console.WriteLine($"Olá, {nome}!");
+    Console.WriteLine($"Você fará 100 anos em {centenarioEmFormatoLongo}.");
 }
